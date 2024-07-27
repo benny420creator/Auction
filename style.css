@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 2em;
+}
+
+#art-piece {
+    margin-bottom: 2em;
+}
+
+#art-image {
+    max-width: 100%;
+    height: auto;
+}
+
+#auction {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin-bottom: 1em;
+}
+
+input[type="number"] {
+    padding: 0.5em;
+    font-size: 1em;
+    margin-right: 0.5em;
+}
+
+button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#bid-history {
+    list-style: none;
+    padding: 0;
+}
+
+#bid-history li {
+    background-color: #e4e4e4;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border-radius: 4px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Art Auction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Charity Art Auction</h1>
+    </header>
+    <main>
+        <section id="art-piece">
+            <img src="art.jpg" alt="Art Piece" id="art-image">
+            <p id="art-description">Beautiful piece of art donated for charity.</p>
+        </section>
+        <section id="auction">
+            <h2>Current Bid: <span id="current-bid">$0</span></h2>
+            <form id="bid-form">
+                <input type="number" id="bid-amount" min="1" placeholder="Enter your bid">
+                <button type="submit">Place Bid</button>
+            </form>
+            <ul id="bid-history"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>All proceeds go to charity.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
