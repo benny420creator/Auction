@@ -1,56 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const bidForm = document.getElementById('bid-form');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const bidAmountInput = document.getElementById('bid-amount');
-    const currentBidElement = document.getElementById('current-bid');
-    const bidHistoryElement = document.getElementById('bid-history');
-    const adminButton = document.getElementById('admin-button');
-    const adminSection = document.getElementById('admin-section');
-    const adminBidHistoryElement = document.getElementById('admin-bid-history');
-
-    // Update the year in the footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", function() {
+    const bidForm = document.getElementById('bidForm');
+    const bidsList = document.getElementById('bidsList');
+    const timeLeft = document.getElementById('timeLeft');
+    const adminButton = document.getElementById('adminButton');
+    const adminSection = document.getElementById('adminSection');
+    const adminPassword = document.getElementById('adminPassword');
+    const adminSubmit = document.getElementById('adminSubmit');
+    const emailList = document.getElementById('emailList');
     
-    let currentBid = 0;
-    let bidHistory = JSON.parse(localStorage.getItem('bidHistory')) || [];
+    let endTime = new Date();
+    endTime.setDate(endTime.getDate() + 7);
 
-    // Populate bid history on page load
-    if (bidHistory.length > 0) {
-        currentBid = Math.max(...bidHistory.map(bid => bid.amount));
-        updateBidUI();
-    }
-    
-    bidForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = nameInput.value;
-        const email = emailInput.value;
-        const newBid = parseFloat(bidAmountInput.value);
-        
-        if (newBid > currentBid) {
-            currentBid = newBid;
-            bidHistory.push({ name, email, amount: newBid });
-            localStorage.setItem('bidHistory', JSON.stringify(bidHistory));
-            updateBidUI();
-        } else {
-            alert('Your bid must be higher than the current bid.');
+    function updateTimer() {
+        let now = new Date();
+        let timeDiff = endTime - now;
+
+        if (timeDiff <= 0) {
+            clearInterval(timerInterval);
+            timeLeft.textContent = "Auction ended";
+            return;
         }
-        
-        nameInput.value = '';
-        emailInput.value = '';
-        bidAmountInput.value = '';
-    });
-    
-    function updateBidUI() {
-        currentBidElement.textContent = `$${currentBid}`;
-        bidHistoryElement.innerHTML = bidHistory.map(bid => `<li>${bid.name}: $${bid.amount}</li>`).join('');
+
+        let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        timeLeft.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    adminButton.addEventListener('click', () => {
-        adminSection.style.display = adminSection.style.display === 'none' ? 'block' : 'none';
-        if (adminSection.style.display === 'block') {
-            adminBidHistoryElement.innerHTML = bidHistory.map(bid => `<li>${bid.name} (${bid.email}): $${bid.amount}</li>`).join('');
+    let timerInterval = setInterval(updateTimer, 1000);
+
+    bidForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let name = document.getElementById('name').value;
+        let bid = document.getElementById('bid').value;
+        let email = document.getElementById('email').value;
+
+        let li = document.createElement('li');
+        li.textContent = `${name} - $${bid}`;
+        bidsList.appendChild(li);
+
+        let emailEntry = document.createElement('li');
+        emailEntry.textContent = `${name}: ${email}`;
+        emailList.appendChild(emailEntry);
+
+        bidForm.reset();
+    });
+
+    adminButton.addEventListener('click', function() {
+        adminSection.classList.toggle('hidden');
+    });
+
+    adminSubmit.addEventListener('click', function() {
+        if (adminPassword.value === 'adminPassword') {
+            emailList.classList.toggle('hidden');
+        } else {
+            alert('Incorrect password');
         }
     });
 });
