@@ -2,12 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const bidForm = document.getElementById('bidForm');
     const bidsList = document.getElementById('bidsList');
     const timeLeft = document.getElementById('timeLeft');
-    const adminButton = document.getElementById('adminButton');
-    const adminSection = document.getElementById('adminSection');
-    const adminPassword = document.getElementById('adminPassword');
-    const adminSubmit = document.getElementById('adminSubmit');
-    const emailList = document.getElementById('emailList');
-    
+
     let endTime = new Date();
     endTime.setDate(endTime.getDate() + 7);
 
@@ -42,22 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
         li.textContent = `${name} - $${bid}`;
         bidsList.appendChild(li);
 
-        let emailEntry = document.createElement('li');
-        emailEntry.textContent = `${name}: ${email}`;
-        emailList.appendChild(emailEntry);
-
         bidForm.reset();
-    });
-
-    adminButton.addEventListener('click', function() {
-        adminSection.classList.toggle('hidden');
-    });
-
-    adminSubmit.addEventListener('click', function() {
-        if (adminPassword.value === 'adminPassword') {
-            emailList.classList.toggle('hidden');
-        } else {
-            alert('Incorrect password');
-        }
     });
 });
