@@ -3,38 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Art Auction</title>
+    <title>Charity Auction</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Charity Art Auction for Jasper Forest Fire Relief</h1>
-    </header>
-    <main>
-        <section id="art-piece">
-            <img src="Art.JPEG" alt="Art Piece" id="art-image">
-            <p id="art-description">Beautiful piece of art donated for charity.</p>
-        </section>
-        <section id="auction">
-            <h2>Current Bid: <span id="current-bid">$0</span></h2>
-            <form id="bid-form">
-                <input type="text" id="name" placeholder="Enter your name" required>
-                <input type="email" id="email" placeholder="Enter your email" required>
-                <input type="number" id="bid-amount" min="1" placeholder="Enter your bid" required>
-                <button type="submit">Place Bid</button>
+    <div class="auction-container">
+        <h1>Charity Auction</h1>
+        <div class="item">
+            <img src="Art.JPEG" alt="Auction Item" class="item-image">
+            <div class="item-details">
+                <h2>Item Name</h2>
+                <p>Description of the item being auctioned.</p>
+            </div>
+        </div>
+        <div class="auction-form">
+            <h3>Place Your Bid</h3>
+            <form id="bidForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="bid">Bid Amount:</label>
+                <input type="number" id="bid" name="bid" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Submit Bid</button>
             </form>
-            <ul id="bid-history"></ul>
-        </section>
-        <button id="admin-button">Admin</button>
-        <section id="admin-section" style="display: none;">
-            <h2>Admin Panel</h2>
-            <ul id="admin-bid-history"></ul>
-        </section>
-    </main>
-    <footer>
-        <p>All proceeds go to <a href="https://www.redcross.ca/" target="_blank">Red Cross Canada</a>.</p>
-        <p>&copy; <span id="2024"></span> Benny420Creator Inc. All rights reserved.</p>
-    </footer>
+        </div>
+        <div class="current-bids">
+            <h3>Current Bids</h3>
+            <ul id="bidsList"></ul>
+        </div>
+        <div class="timer" id="timer">Auction ends in: <span id="timeLeft"></span></div>
+        <button id="adminButton">Admin</button>
+        <div id="adminSection" class="hidden">
+            <label for="adminPassword">Password:</label>
+            <input type="password" id="adminPassword">
+            <button id="adminSubmit">Submit</button>
+            <ul id="emailList" class="hidden"></ul>
+        </div>
+        <footer>
+            <p>© 2024 Benny420Creator Inc.</p>
+            <p>Donation will be made to <a href="https://www.redcross.ca/" target="_blank">Red Cross</a></p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
