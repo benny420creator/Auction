@@ -1,7 +1,7 @@
 body {
     background-color: #121212;
     color: #ffffff;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,24 +17,44 @@ body {
     background-color: #1e1e1e;
     max-width: 500px;
     width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
 .auction-item img {
     max-width: 100%;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 form {
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input, button {
     margin: 5px;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #333;
+    border: 1px solid #555;
     background-color: #333;
     color: #ffffff;
+    width: 80%;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
 }
 
 footer {
@@ -51,4 +71,10 @@ a {
 
 #admin-button, #show-emails {
     margin-top: 10px;
+    width: auto;
+}
+
+#timer {
+    margin-top: 20px;
+    font-size: 1.2em;
 }
