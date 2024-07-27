@@ -93,6 +93,31 @@ button:hover {
     border-radius: 4px;
 }
 
+#admin-button {
+    margin: 2em 0;
+    background-color: #555;
+}
+
+#admin-section {
+    background-color: #1e1e1e;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#admin-bid-history {
+    list-style: none;
+    padding: 0;
+    color: #ff0000; /* Red for visibility */
+}
+
+#admin-bid-history li {
+    background-color: #444;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border-radius: 4px;
+}
+
 footer {
     background-color: #333;
     color: #fff;
